@@ -90,5 +90,18 @@ class TapTester(object):
             if self.quietcount > UNDERSENSITIVE:
                 self.tap_threshold *= 1
 
+def clap_detect():
+    while True:
+        tt = TapTester()
+        clap_count = 0
+
+        while True:
+            if tt.listen():
+                clap_count += 2
+
+                if clap_count == REQUIRED_CLAPS:
+                    print("clap dectected")
+                    break
+
 
 
